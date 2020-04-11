@@ -25,22 +25,10 @@ private:
 public:
     music(int _mode, int _speed, int *_melody, float *_rhythm, int _size); //以_mode、_speed、_melody、_rhythm初始化对象，分别代表调式、速率、旋律、节奏
     ~music();
-    //void change_mode(int half_tone); //用于改变调式
     float *melody(int *_melody);   //输入_melody为该调式下乐曲的简谱，升1用11表示，以此类推；空拍用0表示。返回一个数组，其中存储乐谱各个音对应的频率。
     float *rhythm(float *_rhythm); //输入_rhythm为melody音符对应的延时拍数，1表示一个4分音符，返回一个数组，其中存储乐谱各个音延续的时间。
     void playmusic(int _pin);      //封装函数，从引脚_pin播放音乐
 };
-
-/*void music::change_mode(int half_tone)
-{
-    for (int i = 0; i < half_tone; i++)
-    {
-        for (int j = 0; j < Size; j++)
-        {
-            Melody[j] *= 1.05;
-        }
-    }
-}*/
 
 music::music(int _mode, int _speed, int *_melody, float *_rhythm, int _size) //以_mode、_speed、_melody、_rhythm初始化对象，分别代表调式、速率、旋律、节奏
 {
@@ -137,15 +125,15 @@ float *music::rhythm(float *_rhythm)
     {
         _rhythm[i] = 1 / _rhythm[i];
     }
+    
     float time_per_note = 60000.0 / float(this->Speed); //四分音符的时间
     float *Rhythm;                                      //存储每个音符的实际时间
-    //int _rhythm_size = sizeof(_rhythm) / sizeof(1);
-    //Size = 13;
     Rhythm = new float[Size];
     for (int i = 0; i < Size; i++)
     {
         Rhythm[i] = _rhythm[i] * time_per_note;
     }
+    
     return Rhythm;
 }
 void music::playmusic(int _pin)
