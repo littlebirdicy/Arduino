@@ -1,8 +1,12 @@
 # 用来播放一些音乐
 
+> 使用前将文件夹复制到 /Arduino/libraries/ 目录下。
+
 下面是使用示例：
 
 ```
+#include "music.h"
+
 int pin = my_pin;
 int *my_melody; 
 float *my_rhythm;
