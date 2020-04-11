@@ -1,0 +1,5 @@
+#class	(KEYWORD1)
+music	KEYWORD1
+
+#Functions and method(KEYWORD2)
+playmusic	KEYWORD2
