@@ -51,3 +51,5 @@ void loop()
     mymusic.playmusic(pin);
 }
 ```
+
+極楽浄土前奏的数组乐谱在music.txt里
